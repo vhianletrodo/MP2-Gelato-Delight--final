@@ -4,21 +4,13 @@ generateTransID();
 checkadmin();
 currentDate();
 userInfo();
-//Edited
 recentAddUser();
 recentNoticeUser();
 addNoticeUser();
 addWarningUser();
 recentWarningUser();
 noticeDetails();
-
-// edited 2
-const currentPath = window.location.pathname;
-if (currentPath === '/mp2/admin/pos.html') {
-  showGelato();
-}
-//console.log(currentPath);
-
+showGelato();
 
 var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
@@ -89,7 +81,7 @@ function showGelato(){
   const productList = document.getElementById('product-list-gelato');
 
   if(jsonProducts){
-    const gelatoProducts = JSON.parse(jsonProducts);
+     const gelatoProducts = JSON.parse(jsonProducts);
     console.log(gelatoProducts.gelato);
 
     let productHTML = '';
@@ -153,7 +145,9 @@ function showGelato(){
       productHTML += '</div>';
     });
 
-    productList.innerHTML = productHTML;
+    if(productList){
+      productList.innerHTML = productHTML;
+    }
 
   }else{
     // Fetch JSON data
@@ -226,7 +220,10 @@ function showGelato(){
           productHTML += '</div>';
         });
 
-        productList.innerHTML = productHTML;
+        if(productList){
+          productList.innerHTML = productHTML;
+        }
+        
       })
       .catch(error => {
         console.error("Error fetching data:", error);
